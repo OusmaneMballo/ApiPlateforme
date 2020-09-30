@@ -8,7 +8,17 @@ use ApiPlatform\Core\Annotation\ApiResource;
 
 /**
  * Compte
- * @ApiResource()
+ * @ApiResource(
+ *     collectionOperations={
+ *      "post"={},
+ *     "get"={},
+ *     },
+ *     itemOperations={
+ *      "get"={},
+ *     "put"={},
+ *     "delete"={},
+ *     }
+ * )
  * @ORM\Table(name="compte", indexes={@ORM\Index(name="IDX_CFF65260E91486CD", columns={"clttMoral_id"}), @ORM\Index(name="IDX_CFF65260C54C8C93", columns={"type_id"}), @ORM\Index(name="IDX_CFF652602CC9D3B8", columns={"cltPhysique_id"})})
  * @ORM\Entity
  */
