@@ -4,10 +4,22 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Annotation\ApiResource;
+use Symfony\Component\Serializer\Annotation\Groups ;
 
 /**
  * Transaction
- * @ApiResource()
+ * @ApiResource(
+ *     normalizationContext = {"groups" = {"read: transaction"}},
+ *     collectionOperations={
+ *      "post"={},
+ *     "get"={},
+ *     },
+ *     itemOperations={
+ *      "get"={},
+ *     "put"={},
+ *     "delete"={},
+ *     }
+ * )
  * @ORM\Table(name="transaction", indexes={@ORM\Index(name="IDX_723705D1F2C56620", columns={"compte_id"}), @ORM\Index(name="IDX_723705D1C54C8C93", columns={"type_id"})})
  * @ORM\Entity
  */
@@ -19,6 +31,7 @@ class Transaction
      * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @Groups ({"read: transaction"})
      */
     private $id;
 
@@ -26,6 +39,7 @@ class Transaction
      * @var string
      *
      * @ORM\Column(name="montant", type="string", length=255, nullable=false)
+     * @Groups ({"read: transaction"})
      */
     private $montant;
 
@@ -43,6 +57,7 @@ class Transaction
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="type_id", referencedColumnName="id")
      * })
+     * @Groups ({"read: transaction"})
      */
     private $type;
 
@@ -53,6 +68,7 @@ class Transaction
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="compte_id", referencedColumnName="id")
      * })
+     * @Groups ({"read: transaction"})
      */
     private $compte;
 

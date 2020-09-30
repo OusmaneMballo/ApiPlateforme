@@ -5,10 +5,13 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Annotation\ApiResource;
+use Symfony\Component\Serializer\Annotation\Groups ;
 
 /**
  * ClientMoral
- * @ApiResource()
+ * @ApiResource(
+ *     normalizationContext = {"groups" = {"read: clientM"}}
+ * )
  * @ORM\Table(name="client_moral")
  * @ORM\Entity
  */
@@ -20,6 +23,7 @@ class ClientMoral
      * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @Groups ({"read: comptes"})
      */
     private $id;
 
@@ -27,6 +31,7 @@ class ClientMoral
      * @var string
      *
      * @ORM\Column(name="nom", type="string", length=255, nullable=false)
+     * @Groups ({"read: clientM"})
      */
     private $nom;
 
@@ -34,6 +39,7 @@ class ClientMoral
      * @var string
      *
      * @ORM\Column(name="raisonsocial", type="string", length=255, nullable=false)
+     * @Groups ({"read: clientM"})
      */
     private $raisonsocial;
 
@@ -41,6 +47,7 @@ class ClientMoral
      * @var string
      *
      * @ORM\Column(name="adresse", type="string", length=255, nullable=false)
+     * @Groups ({"read: clientM"})
      */
     private $adresse;
 
@@ -55,6 +62,7 @@ class ClientMoral
      * @var string
      *
      * @ORM\Column(name="telephone", type="string", length=255, nullable=false)
+     * @Groups ({"read: clientM"})
      */
     private $telephone;
 
@@ -62,6 +70,7 @@ class ClientMoral
      * @var string
      *
      * @ORM\Column(name="email", type="string", length=255, nullable=false)
+     * @Groups ({"read: clientM"})
      */
     private $email;
 
@@ -69,6 +78,7 @@ class ClientMoral
      * @var string
      *
      * @ORM\Column(name="login", type="string", length=255, nullable=false)
+     * @Groups ({"read: clientM"})
      */
     private $login;
 
@@ -76,6 +86,7 @@ class ClientMoral
      * @var string
      *
      * @ORM\Column(name="passwd", type="string", length=255, nullable=false)
+     * @Groups ({"read: clientM"})
      */
     private $passwd;
 

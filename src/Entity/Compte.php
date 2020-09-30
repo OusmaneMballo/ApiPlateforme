@@ -5,19 +5,12 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Annotation\ApiResource;
+use Symfony\Component\Serializer\Annotation\Groups ;
 
 /**
  * Compte
  * @ApiResource(
- *     collectionOperations={
- *      "post"={},
- *     "get"={},
- *     },
- *     itemOperations={
- *      "get"={},
- *     "put"={},
- *     "delete"={},
- *     }
+ *     normalizationContext = {"groups" = {"read: comptes"}}
  * )
  * @ORM\Table(name="compte", indexes={@ORM\Index(name="IDX_CFF65260E91486CD", columns={"clttMoral_id"}), @ORM\Index(name="IDX_CFF65260C54C8C93", columns={"type_id"}), @ORM\Index(name="IDX_CFF652602CC9D3B8", columns={"cltPhysique_id"})})
  * @ORM\Entity
@@ -30,6 +23,7 @@ class Compte
      * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @Groups ({"read: comptes"})
      */
     private $id;
 
@@ -37,6 +31,7 @@ class Compte
      * @var string
      *
      * @ORM\Column(name="numero", type="string", length=255, nullable=false)
+     * @Groups ({"read: comptes"})
      */
     private $numero;
 
@@ -44,6 +39,7 @@ class Compte
      * @var string
      *
      * @ORM\Column(name="cleRip", type="string", length=255, nullable=false)
+     * @Groups ({"read: comptes"})
      */
     private $clerip;
 
@@ -51,6 +47,7 @@ class Compte
      * @var int
      *
      * @ORM\Column(name="solde", type="integer", nullable=false)
+     * @Groups ({"read: comptes"})
      */
     private $solde;
 
@@ -58,6 +55,7 @@ class Compte
      * @var string
      *
      * @ORM\Column(name="etat", type="string", length=255, nullable=false)
+     * @Groups ({"read: comptes"})
      */
     private $etat;
 
@@ -96,6 +94,7 @@ class Compte
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="cltPhysique_id", referencedColumnName="id")
      * })
+     * @Groups ({"read: comptes"})
      */
     private $cltphysique;
 
@@ -106,6 +105,7 @@ class Compte
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="type_id", referencedColumnName="id")
      * })
+     * @Groups ({"read: comptes"})
      */
     private $type;
 
@@ -116,6 +116,7 @@ class Compte
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="clttMoral_id", referencedColumnName="id")
      * })
+     * @Groups ({"read: comptes"})
      */
     private $clttmoral;
     /**
